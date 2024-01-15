@@ -1,0 +1,40 @@
+version: '3.7'
+services:
+    mariadb:
+        image: mariadb:latest
+        container_name: "mariadb"
+        restart: always
+        environment: 
+          MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+        volumes:
+          - LAMPData:/var/lib/mysql 
+          - ./database/init.sql:/docker-entrypoint-initdb.d/l.sql
+          - ./database/devopstravel.sql:/docker-entrypoint-initdb.d/2.sql
+        networks:
+          - LAMPNet
+    php:      
+        build:
+        container: php
+        ports:
+          - "8010:80"
+        depends_on:
+          - mariadb
+        networks:
+          - LAMPNet
+    phpmyadmin:
+        image: phpmyadmin:lastet
+        container: phpmyadmin
+        restart: always
+        ports:
+          - "8011:80"
+        depends_on:
+          - mariadb
+        environment:
+        PMA_HOST: mariadb        
+        networks:
+          - LAMPNet
+volumes:
+  LAMPData: {}
+networks:
+  LAMPNet:
+    external: false  
