@@ -43,8 +43,8 @@ fi
 
 
 cd --
-cd ~/repo
-sudo docker-compose -p 295-Reto2-LAMP --env-file env.dev -d --build
+cd bootcamp-devops-2023/295devops-travel-lamp
+sudo docker-compose -p 295-Reto2-LAMP --env-file env.dev up -d --build
 sudo docker ps 
 
 
