@@ -1,5 +1,5 @@
 <?php
-$dbHost     = "localhost"; 
+$dbHost     = "mariadb"; 
 $dbUsername = "codeuser"; 
 $dbPassword = ""; 
 $dbName     = "devopstravel"; 
