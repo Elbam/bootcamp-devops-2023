@@ -1,4 +1,4 @@
 CREATE DATABASE devopstravel;
-CREATE USER 'codeuser'@'%' IDENTIFIED BY 'codepass';
-GRANT ALL PRIVILEGES ON *.* TO 'codeuser'@'%';
+CREATE USER 'codeuser'@'mariadb' IDENTIFIED BY 'codepass';
+GRANT ALL PRIVILEGES ON *.* TO 'codeuser'@'mariadb';
 FLUSH PRIVILEGES;
