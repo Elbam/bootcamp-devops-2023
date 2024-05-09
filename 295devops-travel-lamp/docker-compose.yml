@@ -4,12 +4,13 @@ services:
         image: mariadb:latest
         container_name: "mariadb"
         restart: always
-        command: "mysqld --init-file ./data/application/init.sql"
         environment: 
           MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
         volumes:
           - lampdata:/var/lib/mysql 
           - ./database/init.sql:/data/application/init.sql
+        networks:
+          - lampnet  
     php:      
         build: .
         container_name: php
@@ -19,6 +20,8 @@ services:
           - mariadb
         links:
           - mariadb
+        networks:
+          - lampnet  
     phpmyadmin:
         image: phpmyadmin:latest
         container_name: phpmyadmin
@@ -31,5 +34,10 @@ services:
           PMA_HOST: mariadb        
         links:
           - mariadb
+        networks:
+          - lampnet  
 volumes:
   lampdata: {}
+networks:
+  lampnet:
+    external: false  
