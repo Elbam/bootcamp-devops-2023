@@ -7,10 +7,10 @@ services:
         environment: 
           MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
         volumes:
-          - lampdata:/var/lib/mysql 
-          - ./database/init.sql:/data/application/init.sql
+          - 295devops-travel-lamp_295-reto2-lamp:/var/lib/mysql 
+          - ./database/init.sql:/data/application/1.sql
         networks:
-          - lampnet  
+          - 295devops-travel-lamp_295-reto2-lamp-lampnet  
     php:      
         build: .
         container_name: php
@@ -19,9 +19,9 @@ services:
         depends_on:
           - mariadb
         links:
-          - mariadb
+          - mariadb 
         networks:
-          - lampnet  
+          - 295devops-travel-lamp_295-reto2-lamp-lampnet  
     phpmyadmin:
         image: phpmyadmin:latest
         container_name: phpmyadmin
@@ -30,14 +30,14 @@ services:
           - "8011:80"
         depends_on:
           - mariadb
-        environment:
-          PMA_HOST: mariadb        
         links:
           - mariadb
+        environment:
+          PMA_HOST: mariadb        
         networks:
-          - lampnet  
+          - 295devops-travel-lamp_295-reto2-lamp-lampnet 
 volumes:
-  lampdata: {}
+  295devops-travel-lamp_295-reto2-lamp: {}
 networks:
-  lampnet:
+  295devops-travel-lamp_295-reto2-lamp-lampnet:
     external: false  
