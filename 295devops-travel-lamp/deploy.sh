@@ -44,7 +44,7 @@ fi
 
 cd --
 cd bootcamp-devops-2023/295devops-travel-lamp
-sudo docker-compose  --env-file env.dev up -d --build
+sudo docker-compose -p 295-reto2-lamp --env-file env.dev up -d --build
 sudo docker ps 
 
 
