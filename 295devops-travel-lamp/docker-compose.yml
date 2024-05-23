@@ -8,7 +8,7 @@ services:
           MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
         volumes:
           - lamp-data:/var/lib/mysql 
-          - ./database/init.sql:/data/application/1.sql
+          - ./database/init.sql:/docker-entrypoint-initdb.d/1.sql
         networks:
           - lamp-net  
     php:      
