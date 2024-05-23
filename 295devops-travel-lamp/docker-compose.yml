@@ -9,6 +9,7 @@ services:
         volumes:
           - lamp-data:/var/lib/mysql 
           - ./database/init.sql:/docker-entrypoint-initdb.d/1.sql
+          - ./database/devopstravel.sql:/docker-entrypoint-initdb.d/2.sql
         networks:
           - lamp-net  
     php:      
