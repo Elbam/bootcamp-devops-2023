@@ -1,14 +1,10 @@
 # Ejercicio 2: "DevOps Travel Challenge: Elevando la LAMP a Nuevas Alturas con Docker"
 
-Si llegastes hasta aquí, es porque lograstes automatizarlo con bash todo ese proceso manual, ahora tenemos una Nueva misión, necesitamos escalar.
-
-Tu misión es llevar la aplicación "DevOps Travel" a un entorno moderno utilizando Docker y Docker Compose. 
-
 Esta aplicación es una LAMP (Linux, Apache, MySQL, PHP) stack que incluye PHP, Apache, y una base de datos MariaDB, gestionada a través de phpMyAdmin. 
 
 El objetivo es containerizar la aplicación, orquestar múltiples contenedores con Docker Compose, subir las imágenes resultantes a Docker Hub y automatizar todo el proceso con un script en bash.
 
-### Recordando un poco como funciona la aplicación
+### Como funciona la aplicación
 
 - Los usuarios pueden reservar paquetes fácilmente a través de esta plataforma fácil de usar en la ubicación deseada.
 - El sitio web front-end está creado utilizando HTML CSS y JavaScript.
@@ -37,71 +33,75 @@ Incluye los accesos principales
 
 ![](./assets/11.png)
 
-### Realizar el desafío con Docker ofrece varios beneficios significativos, entre los cuales se incluyen:
-
-- Portabilidad
-- Aislamiento de Recursos
-- Escalabilidad
-- Consistencia
-- Eficiencia en la Implementación
-- Automatización
-- Facilita la Colaboración
-- Administración de Dependencias
 
 ### Pasos del Desafío:
 
 #### Containerización con Docker:
 
-- Crea un Dockerfile para cada componente de la aplicación (PHP, Apache, MariaDB).
+- Se Creo un Dockerfile para los componentes de la aplicación PHP y Apache.
 
-Configura adecuadamente los servicios para trabajar juntos en un entorno Docker.
+  Se utilizon un enfoque multicapas
 
 #### Docker Compose para multicontenedores:
 
-- Crea un archivo docker-compose.yml que orqueste todos los contenedores necesarios para la aplicación DevOps Travel.
+- Se Creo un archivo docker-compose.yml que orquesto todos los contenedores necesarios para la aplicación DevOps Travel.:
+            
+            Maria DB
+            PHP
+            PHPMyAdmin (Administracion de la BdD)
 
-Asegúrate de que los servicios se conecten entre sí y que phpMyAdmin pueda gestionar la base de datos.
+            Se gestiona el Volumen para Persistencia de Datos
+            Se gestiona la Red entre los contenedores 
 
 
 #### Subida a Docker Hub:
 
-- Crea una cuenta en Docker Hub si no la tienes.
-- Construye las imágenes Docker de tu aplicación y súbelas a Docker Hub.
-- Utiliza versiones semánticas para etiquetar tus imágenes.
+   - Crea una cuenta en Docker Hub si no la tienes.
+   - Construye las imágenes Docker de tu aplicación y súbelas a Docker Hub.
+   - Utiliza versiones semánticas para etiquetar tus imágenes.
 
 #### Script Bash de Automatización:
 
-- Crea un script bash llamado deploy.sh que automatice el proceso completo.
-- El script debe incluir pasos para construir cada imagen, etiquetarlas, subirlas a Docker Hub y luego ejecutar Docker Compose.
-- Ademas debes validar si la imagen que se subio a docker hub es la misma y no dejarlo avanzar
-recueden las imagenes deben ser inmutables
-- Implementa manejo de versiones semánticas en el script.
+- Se Crea el script bash llamado deploy.sh que automatiza el proceso completo.
+          - El script incluye los pasos para construir cada imagen, etiquetarlas, subirlas a Docker Hub y luego ejecutar Docker Compose.
+          - Ademas debes validar si la imagen que se subio a docker hub es la misma y no dejarlo avanzar
+          recueden las imagenes deben ser inmutables
+          - Implementa manejo de versiones semánticas en el script.
 
 #### Documentación:
 
-Proporciona documentación clara y concisa en el código, Dockerfiles, docker-compose.yml y el script bash.
+         Proporciona documentación clara y concisa en el código, Dockerfiles, docker-compose.yml y el script bash.
 
-### Vistas
-
-![](./assets/1.png)
-![](./assets/2.png)
-![](./assets/4.png)
-![](./assets/5.png)
-![](./assets/7.png)
-![](./assets/8.png)
-![](./assets/9.png)
-![](./assets/10.png)
 
 
 ---
 
+
+Codigo fuente: [295devops-travel-lamp](https://github.com/Elbam/bootcamp-devops-2023/tree/ejercicio2-dockeriza/295devops-travel-lamp)
+
+
+Para ejecucion en KillerCoda:
+
+https://killercoda.com/playgrounds/scenario/ubuntu
+
+Pasos:
+
+git clone https://github.com/Elbam/bootcamp-devops-2023.git
+
+chmod +x bootcamp-devops-2023/295devops-travel-lamp
+
+sudo bootcamp-devops-2023/295devops-travel-lamp/deploy.sh
+
+
+
 Documentación Complementaria:
+
 
 [Docker compose lamp](https://github.com/sprintcube/docker-compose-lamp)
 
 [Setting Up a LAMP Stack with Docker Compose](https://mariadb.com/kb/en/setting-up-a-lamp-stack-with-docker-compose/)
 
 
-© by RoxsRoss 2023 | All Rights Reserved
-
+© Diseñado by RoxsRoss 2023 | All Rights Reserved
+© Ejecutado por Elba Marina Mujica May 2024
 
